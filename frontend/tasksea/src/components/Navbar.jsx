@@ -32,6 +32,11 @@ const Navbar = () => {
               <>
                 <Link to="/post-task" className="hover:text-blue-200">Post Task</Link>
                 <Link to="/my-tasks" className="hover:text-blue-200">My Tasks</Link>
+                {user.role === 'admin' && (
+                  <Link to="/admin" className="hover:text-blue-200 bg-purple-500 px-3 py-1 rounded">
+                    Admin Panel
+                  </Link>
+                )}
                 <div className="relative group">
                   <button className="flex items-center hover:text-blue-200">
                     {user.name}

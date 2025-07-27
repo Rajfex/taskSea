@@ -41,6 +41,7 @@ export const authService = {
         id: data.user.id,
         name: data.user.name,
         email: data.user.email,
+        role: data.user.role,
         token: data.token
       }));
     }
@@ -64,6 +65,7 @@ export const authService = {
         id: data.user.id,
         name: data.user.name,
         email: data.user.email,
+        role: data.user.role,
         token: data.token
       }));
     }
@@ -103,6 +105,9 @@ export const taskService = {
     if (filters.categoryId) queryParams.append('categoryId', filters.categoryId);
     if (filters.search) queryParams.append('search', filters.search);
     if (filters.status) queryParams.append('status', filters.status);
+    if (filters.page) queryParams.append('page', filters.page);
+    if (filters.limit) queryParams.append('limit', filters.limit);
+    if (filters.sortBy) queryParams.append('sortBy', filters.sortBy);
     
     const queryString = queryParams.toString() ? `?${queryParams.toString()}` : '';
     const response = await fetch(`${API_URL}/tasks${queryString}`, {
@@ -246,6 +251,146 @@ export const categoryService = {
     const response = await fetch(`${API_URL}/categories/${id}`, {
       headers: { 
         'Content-Type': 'application/json'
+      }
+    });
+    
+    return handleResponse(response);
+  }
+};
+
+// Admin Services
+export const adminService = {
+  // Get dashboard stats
+  getDashboardStats: async () => {
+    const response = await fetch(`${API_URL}/admin/dashboard`, {
+      headers: { 
+        'Content-Type': 'application/json',
+        ...authHeader()
+      }
+    });
+    
+    return handleResponse(response);
+  },
+
+  // User management
+  getUsers: async (filters = {}) => {
+    const queryParams = new URLSearchParams();
+    if (filters.page) queryParams.append('page', filters.page);
+    if (filters.limit) queryParams.append('limit', filters.limit);
+    if (filters.search) queryParams.append('search', filters.search);
+    if (filters.role) queryParams.append('role', filters.role);
+    
+    const queryString = queryParams.toString() ? `?${queryParams.toString()}` : '';
+    const response = await fetch(`${API_URL}/admin/users${queryString}`, {
+      headers: { 
+        'Content-Type': 'application/json',
+        ...authHeader()
+      }
+    });
+    
+    return handleResponse(response);
+  },
+
+  updateUserRole: async (userId, role) => {
+    const response = await fetch(`${API_URL}/admin/users/${userId}/role`, {
+      method: 'PUT',
+      headers: { 
+        'Content-Type': 'application/json',
+        ...authHeader()
+      },
+      body: JSON.stringify({ role })
+    });
+    
+    return handleResponse(response);
+  },
+
+  deleteUser: async (userId) => {
+    const response = await fetch(`${API_URL}/admin/users/${userId}`, {
+      method: 'DELETE',
+      headers: { 
+        'Content-Type': 'application/json',
+        ...authHeader()
+      }
+    });
+    
+    return handleResponse(response);
+  },
+
+  // Task management
+  getAdminTasks: async (filters = {}) => {
+    const queryParams = new URLSearchParams();
+    if (filters.page) queryParams.append('page', filters.page);
+    if (filters.limit) queryParams.append('limit', filters.limit);
+    if (filters.search) queryParams.append('search', filters.search);
+    if (filters.status) queryParams.append('status', filters.status);
+    
+    const queryString = queryParams.toString() ? `?${queryParams.toString()}` : '';
+    const response = await fetch(`${API_URL}/admin/tasks${queryString}`, {
+      headers: { 
+        'Content-Type': 'application/json',
+        ...authHeader()
+      }
+    });
+    
+    return handleResponse(response);
+  },
+
+  deleteTask: async (taskId) => {
+    const response = await fetch(`${API_URL}/admin/tasks/${taskId}`, {
+      method: 'DELETE',
+      headers: { 
+        'Content-Type': 'application/json',
+        ...authHeader()
+      }
+    });
+    
+    return handleResponse(response);
+  },
+
+  // Category management
+  getAdminCategories: async () => {
+    const response = await fetch(`${API_URL}/admin/categories`, {
+      headers: { 
+        'Content-Type': 'application/json',
+        ...authHeader()
+      }
+    });
+    
+    return handleResponse(response);
+  },
+
+  createCategory: async (categoryData) => {
+    const response = await fetch(`${API_URL}/admin/categories`, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        ...authHeader()
+      },
+      body: JSON.stringify(categoryData)
+    });
+    
+    return handleResponse(response);
+  },
+
+  updateCategory: async (categoryId, categoryData) => {
+    const response = await fetch(`${API_URL}/admin/categories/${categoryId}`, {
+      method: 'PUT',
+      headers: { 
+        'Content-Type': 'application/json',
+        ...authHeader()
+      },
+      body: JSON.stringify(categoryData)
+    });
+    
+    return handleResponse(response);
+  },
+
+  deleteCategory: async (categoryId) => {
+    const response = await fetch(`${API_URL}/admin/categories/${categoryId}`, {
+      method: 'DELETE',
+      headers: { 
+        'Content-Type': 'application/json',
+        ...authHeader()
       }
     });
     

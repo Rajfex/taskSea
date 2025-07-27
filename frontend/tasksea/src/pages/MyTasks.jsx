@@ -101,54 +101,49 @@ const MyTasks = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">My Tasks</h1>
-        <p className="text-gray-600">Manage your posted tasks and view your applications</p>
-      </div>
+    <div className="bg-gray-50 min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">My Tasks</h1>
+          <p className="text-gray-600">Manage your posted tasks and view your applications</p>
+        </div>
 
-      {/* Tab Navigation */}
-      <div className="mb-6">
-        <div className="border-b border-gray-200">
-          <nav className="-mb-px flex space-x-8">
+        {/* Tab Navigation */}
+        <div className="mb-8">
+          <div className="bg-white rounded-xl border border-gray-200 p-1 inline-flex">
             <button
               onClick={() => setActiveTab('posted')}
-              className={`py-2 px-1 border-b-2 font-medium text-sm ${
+              className={`px-6 py-2 rounded-lg font-medium text-sm transition-colors ${
                 activeTab === 'posted'
-                  ? 'border-blue-500 text-blue-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               Posted Tasks ({postedTasks.length})
             </button>
             <button
               onClick={() => setActiveTab('applied')}
-              className={`py-2 px-1 border-b-2 font-medium text-sm ${
+              className={`px-6 py-2 rounded-lg font-medium text-sm transition-colors ${
                 activeTab === 'applied'
-                  ? 'border-blue-500 text-blue-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               Applied Tasks ({appliedTasks.length})
             </button>
-          </nav>
-        </div>
-      </div>
-
-      {error && (
-        <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
-          <div className="flex">
-            <div className="flex-shrink-0">
-              <svg className="h-5 w-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <div className="ml-3">
-              <p className="text-sm text-red-700">{error}</p>
-            </div>
           </div>
         </div>
-      )}
+
+        {error && (
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+            <div className="flex">
+              <svg className="h-5 w-5 text-red-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p className="ml-3 text-sm text-red-700">{error}</p>
+            </div>
+          </div>
+        )}
 
       {loading ? (
         <div className="flex justify-center items-center h-64">
@@ -339,6 +334,7 @@ const MyTasks = () => {
         />
       )}
     </div>
+  </div>
   );
 };
 

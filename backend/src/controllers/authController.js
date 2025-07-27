@@ -56,7 +56,8 @@ exports.register = async (req, res, next) => {
       user: {
         id: user.id,
         name: user.name,
-        email: user.email
+        email: user.email,
+        role: user.role
       },
       token
     });
@@ -107,7 +108,8 @@ exports.login = async (req, res, next) => {
       user: {
         id: user.id,
         name: user.name,
-        email: user.email
+        email: user.email,
+        role: user.role
       },
       token
     });
@@ -123,7 +125,7 @@ exports.getProfile = async (req, res, next) => {
   try {
     // req.user is set by the auth middleware
     const user = await User.findByPk(req.user.id, {
-      attributes: ['id', 'name', 'email', 'createdAt']
+      attributes: ['id', 'name', 'email', 'role', 'createdAt']
     });
 
     res.status(200).json({
