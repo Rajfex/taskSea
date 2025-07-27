@@ -24,11 +24,14 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING(255),
     allowNull: false
   },
+<<<<<<< HEAD
   role: {
     type: DataTypes.ENUM('user', 'admin'),
     defaultValue: 'user',
     allowNull: false
   },
+=======
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7
   createdAt: {
     type: DataTypes.DATE,
     field: 'created_at',

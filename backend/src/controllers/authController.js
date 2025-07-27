@@ -56,8 +56,12 @@ exports.register = async (req, res, next) => {
       user: {
         id: user.id,
         name: user.name,
+<<<<<<< HEAD
         email: user.email,
         role: user.role
+=======
+        email: user.email
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7
       },
       token
     });
@@ -108,8 +112,12 @@ exports.login = async (req, res, next) => {
       user: {
         id: user.id,
         name: user.name,
+<<<<<<< HEAD
         email: user.email,
         role: user.role
+=======
+        email: user.email
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7
       },
       token
     });
@@ -125,7 +133,11 @@ exports.getProfile = async (req, res, next) => {
   try {
     // req.user is set by the auth middleware
     const user = await User.findByPk(req.user.id, {
+<<<<<<< HEAD
       attributes: ['id', 'name', 'email', 'role', 'createdAt']
+=======
+      attributes: ['id', 'name', 'email', 'createdAt']
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7
     });
 
     res.status(200).json({

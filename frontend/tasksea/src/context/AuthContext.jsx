@@ -27,7 +27,10 @@ export const AuthProvider = ({ children }) => {
         id: response.user.id,
         name: response.user.name,
         email: response.user.email,
+<<<<<<< HEAD
         role: response.user.role,
+=======
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7
         token: response.token
       });
       setLoading(false);
@@ -49,7 +52,10 @@ export const AuthProvider = ({ children }) => {
         id: response.user.id,
         name: response.user.name,
         email: response.user.email,
+<<<<<<< HEAD
         role: response.user.role,
+=======
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7
         token: response.token
       });
       setLoading(false);

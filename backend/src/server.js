@@ -9,7 +9,10 @@ require('dotenv').config();
 const authRoutes = require('./routes/authRoutes');
 const taskRoutes = require('./routes/taskRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
+<<<<<<< HEAD
 const adminRoutes = require('./routes/adminRoutes');
+=======
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7
 
 // Initialize Express app
 const app = express();
@@ -33,7 +36,10 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/categories', categoryRoutes);
+<<<<<<< HEAD
 app.use('/api/admin', adminRoutes);
+=======
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7
 
 // Basic route
 app.get('/', (req, res) => {

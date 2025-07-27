@@ -5,6 +5,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+<<<<<<< HEAD
     extend: {
       colors: {
         primary: {
@@ -60,6 +61,9 @@ export default {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
     },
+=======
+    extend: {},
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7
   },
   plugins: [],
 }

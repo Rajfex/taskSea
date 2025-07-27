@@ -41,7 +41,10 @@ export const authService = {
         id: data.user.id,
         name: data.user.name,
         email: data.user.email,
+<<<<<<< HEAD
         role: data.user.role,
+=======
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7
         token: data.token
       }));
     }
@@ -65,7 +68,10 @@ export const authService = {
         id: data.user.id,
         name: data.user.name,
         email: data.user.email,
+<<<<<<< HEAD
         role: data.user.role,
+=======
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7
         token: data.token
       }));
     }
@@ -105,9 +111,12 @@ export const taskService = {
     if (filters.categoryId) queryParams.append('categoryId', filters.categoryId);
     if (filters.search) queryParams.append('search', filters.search);
     if (filters.status) queryParams.append('status', filters.status);
+<<<<<<< HEAD
     if (filters.page) queryParams.append('page', filters.page);
     if (filters.limit) queryParams.append('limit', filters.limit);
     if (filters.sortBy) queryParams.append('sortBy', filters.sortBy);
+=======
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7
     
     const queryString = queryParams.toString() ? `?${queryParams.toString()}` : '';
     const response = await fetch(`${API_URL}/tasks${queryString}`, {
@@ -257,6 +266,7 @@ export const categoryService = {
     return handleResponse(response);
   }
 };
+<<<<<<< HEAD
 
 // Admin Services
 export const adminService = {
@@ -397,3 +407,5 @@ export const adminService = {
     return handleResponse(response);
   }
 };
+=======
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7

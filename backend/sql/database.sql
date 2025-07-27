@@ -10,7 +10,10 @@ CREATE TABLE IF NOT EXISTS users (
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
+<<<<<<< HEAD
     role ENUM('user', 'admin') DEFAULT 'user' NOT NULL,
+=======
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -76,8 +79,11 @@ INSERT IGNORE INTO categories (name) VALUES
 ('Research'),
 ('Teaching'),
 ('Technical');
+<<<<<<< HEAD
 
 -- Insert default admin user (password: admin123)
 -- Note: In production, change this password immediately after first login
 INSERT IGNORE INTO users (name, email, password, role) VALUES 
 ('Administrator', 'admin@tasksea.com', '$2a$10$zwCZW./ngwk6bSaU3AkPu.BfQMCS4uIKv9aY3ps3xFhZ3K8NzTgsO', 'admin');
+=======
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7

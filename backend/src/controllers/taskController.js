@@ -6,6 +6,7 @@ const { Op } = require('sequelize');
 // @access  Public
 exports.getTasks = async (req, res, next) => {
   try {
+<<<<<<< HEAD
     const { categoryId, search, status, page = 1, limit = 10, sortBy = 'newest' } = req.query;
     const filter = {};
 
@@ -14,6 +15,11 @@ exports.getTasks = async (req, res, next) => {
     const limitNumber = parseInt(limit, 10);
     const offset = (pageNumber - 1) * limitNumber;
 
+=======
+    const { categoryId, search, status } = req.query;
+    const filter = {};
+
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7
     // Apply filters if provided
     if (categoryId) {
       filter.categoryId = categoryId;
@@ -31,6 +37,7 @@ exports.getTasks = async (req, res, next) => {
       ];
     }
 
+<<<<<<< HEAD
     // Determine sort order
     let order;
     switch (sortBy) {
@@ -44,6 +51,9 @@ exports.getTasks = async (req, res, next) => {
     }
 
     const { count, rows: tasks } = await Task.findAndCountAll({
+=======
+    const tasks = await Task.findAll({
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7
       where: filter,
       include: [
         {
@@ -57,6 +67,7 @@ exports.getTasks = async (req, res, next) => {
           attributes: ['id', 'name']
         }
       ],
+<<<<<<< HEAD
       order: order,
       limit: limitNumber,
       offset: offset
@@ -75,6 +86,14 @@ exports.getTasks = async (req, res, next) => {
       totalPages: totalPages,
       hasNextPage: hasNextPage,
       hasPrevPage: hasPrevPage,
+=======
+      order: [['createdAt', 'DESC']]
+    });
+
+    res.status(200).json({
+      success: true,
+      count: tasks.length,
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7
       tasks
     });
   } catch (error) {

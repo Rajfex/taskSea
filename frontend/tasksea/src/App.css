@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Additional custom styles beyond Tailwind
+=======
+/* Additional custom styles beyond Tailwind */
+>>>>>>> 91a39560325e9bb73d0a582443afddb2003bd7e7
 #root {
   min-height: 100vh;
   display: flex;
